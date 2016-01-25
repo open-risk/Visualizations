@@ -4,12 +4,13 @@ This is a simple python script to create the effect of a magically recombining l
 
 ### Libraries Used
 
-
-#### This is the main library for generatic programmatic svg frames
+<pre><code>
+# This is the main library for generatic programmatic svg frames
 import svgwrite
-#### The following libraries help us with the computations
+# The following libraries help us with the computations
 import random
 import math
 import numpy as np
-#### We use subprocess to do some file conversions on the fly (you can also do this separately)
+# We use subprocess to do some file conversions on the fly (you can also do this separately)
 import subprocess
+</code></pre>
