@@ -10,9 +10,7 @@ and end up with the recombined logo
 
 ![](https://github.com/open-risk/Visualizations/blob/master/Recombining-Logo/test359.jpg)
 
-You can apply the technique to any logo you can decompose into distinct svg elements that can be animated. The script produces a recombining animation of the OpenRisk logo
-
-![](https://www.youtube.com/watch?v=7s1QGWZ3dR8).
+You can apply the technique to any logo you can decompose into distinct svg elements that can be animated. The script produces a recombining animation of the OpenRisk [logo](https://www.youtube.com/watch?v=7s1QGWZ3dR8).
 
 ### Concept
 
