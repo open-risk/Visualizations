@@ -2,7 +2,7 @@
 
 This is a simple python script to create the effect of a "magically" recombining logo. 
 
-So for example you "start" with the following ![img1]:(https://github.com/open-risk/Visualizations/blob/master/Recombining-Logo/test2.jpg)
+So for example you "start" with the following ![]:(https://github.com/open-risk/Visualizations/blob/master/Recombining-Logo/test2.jpg)
 
 and end up with the following 
 
