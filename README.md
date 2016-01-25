@@ -1,2 +1,3 @@
 # Visualizations
-Collection of visualization algorithms and scripts, python / javascript based
+
+A collection of visualization algorithms and scripts primarily python / javascript based
