@@ -106,3 +106,13 @@ for i in range(0, 28):
     vy[i] = (1.2 * rmax - r[i]) * random.uniform(-10, 10)
     r[i] = r[i] / 2
 ```
+
+### Create a bounding box
+
+Depending on the physics you want to apply to the motion of the elements, you may have to contain them via a bounding box (where they bounce)
+
+```python
+# Set the bounding box dimensions
+xbox = 600
+ybox = 200
+```
