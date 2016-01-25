@@ -46,7 +46,7 @@ r = np.ones(n)
 c = []
 ```
 
-### Programmatically generate the svg elements
+### Programmatically generate the svg elements (shapes, positions, colors)
 
 This can be more or less easy depending on the logo. Our OpenRisk logo is simply a set of circular elements :-)
 
@@ -90,4 +90,19 @@ for i in range(21, 28):
     yo[i] = 100 + radius * math.sin(phase + (i - 21) * 2. * math.pi / 7)
     r[i] = 12.5
     c.append('#BA3B1D')
+```
+
+### Set the dynamic properties of the elements (velocities)
+
+This is where the logo lifts off, so to speak. You select the initial velocities for all elements
+
+```python
+# Create random velocities
+# Use inverse correlation between size and velocity to create illusion of inertia
+dt = 0.004
+rmax = max(r)
+for i in range(0, 28):
+    vx[i] = (1.2 * rmax - r[i]) * random.uniform(-10, 10)
+    vy[i] = (1.2 * rmax - r[i]) * random.uniform(-10, 10)
+    r[i] = r[i] / 2
 ```
