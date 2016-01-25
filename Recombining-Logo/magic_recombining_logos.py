@@ -7,6 +7,7 @@
 
 # This is the main library for generatic programmatic svg frames
 import svgwrite
+from svgwrite import px
 # The following libraries help us with the computations
 import random
 import math
