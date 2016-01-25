@@ -116,3 +116,58 @@ Depending on the physics you want to apply to the motion of the elements, you ma
 xbox = 600
 ybox = 200
 ```
+
+###  Do some bookeeping around frames
+
+If you want to add some static frames at the begining or the end of the animated sequence its convenient to number them in a uniform scheme
+
+```python
+# Set the frame numbers, static & text frames used for finishing touches
+motion_frames = 360
+static_frames = int(0.5 * 30)
+text_frames = int(2.5 * 30)
+total_frames = motion_frames + static_frames + text_frames
+```
+
+### The main loop
+
+This is where the magic happens
+* create an new svg file
+* draw the bounding box
+* draw all element positions at their current locations
+* update the element locations
+* check for collisions
+* generate svg and jpg
+
+```python
+# Frame loop.
+# (jpg files are created with reverse numerical tag to run backward in time)
+for frame in range(1, motion_frames):
+    print(frame)
+    # start new frame
+    filename1 = 'test' + str(frame)
+    filename2 = 'test' + str(motion_frames - frame)
+    dwg = svgwrite.Drawing(filename1 + '.svg')
+
+    # Draw the bounding box
+    dwg.add(dwg.line((0, 0), (0, ybox), stroke=svgwrite.rgb(10, 10, 16, '%')))
+    dwg.add(dwg.line((0, ybox), (xbox, ybox), stroke=svgwrite.rgb(10, 10, 16, '%')))
+    dwg.add(dwg.line((xbox, ybox), (xbox, 0), stroke=svgwrite.rgb(10, 10, 16, '%')))
+    dwg.add(dwg.line((xbox, 0), (0, 0), stroke=svgwrite.rgb(10, 10, 16, '%')))
+
+    # Draw all elements and update their position
+    # Check for collisions with bounding box and if yes flip velocities          
+    for i in range(0, 28):
+        dwg.add(dwg.circle(center=(xo[i], yo[i]), r=r[i] * px,
+                           stroke_width=0, fill=c[i]))
+        xo[i] = xo[i] + dt * vx[i]
+        yo[i] = yo[i] + dt * vy[i]
+        if (xo[i] + r[i] > xbox - 4 or xo[i] - r[i] < 4 ):
+            vx[i] = - vx[i]
+        if (yo[i] + r[i] > ybox - 4 or yo[i] - r[i] < 4):
+            vy[i] = - vy[i]
+
+    # save frame and process it into jpg
+    dwg.save()
+    subprocess.call(['convert', '-density', '100', '-flatten', '-quality',  '100', filename1 + '.svg', filename2 + '.jpg'])
+```
