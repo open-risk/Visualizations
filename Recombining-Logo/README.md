@@ -1,6 +1,6 @@
 # Recombining Logo
 
-This is a simple python script to create the effect of a magically recombining logo. You can apply the technique to any logo you can decompose into distinct svg elements that can be animated. The script produces a recombining animation of the OpenRisk [logo](https://www.youtube.com/watch?v=7s1QGWZ3dR8).
+This is a simple python script to create the effect of a "magically" recombining logo. You can apply the technique to any logo you can decompose into distinct svg elements that can be animated. The script produces a recombining animation of the OpenRisk [logo](https://www.youtube.com/watch?v=7s1QGWZ3dR8).
 
 ### Concept
 
@@ -25,7 +25,9 @@ import subprocess
 
 ### Store data in numpy arrays
 
-<pre><code>
+Using numpy helps with fast computations (for more complicated trajectories)
+
+```python
 # This is the total number of svg logo elements (for storage)
 n = 28
 
@@ -42,5 +44,50 @@ vy = np.zeros(n)
 r = np.ones(n)
 # element color
 c = []
-</code></pre>
+```
 
+### Programmatically generate the svg elements
+
+This can be more or less easy depending on the logo. Our OpenRisk logo is simply a set of circular elements :-)
+
+```python
+# Set initial locations, radii and colors of all circles
+
+# Set the radii of inner circles
+r[3] = 35
+r[2] = 66
+r[1] = 95
+r[0] = 120
+
+# Set the color scheme
+c.append('#221616')
+c.append('#F1D039')
+c.append('#491311')
+c.append('#B46B36')
+
+for i in range(0, 4):
+    xo[i] = 100
+    yo[i] = 100
+
+radius = 32.5
+for i in range(4, 14):
+    xo[i] = 100 + radius * math.cos((i - 4) * 2. * math.pi / 10)
+    yo[i] = 100 + radius * math.sin((i - 4) * 2. * math.pi / 10)
+    r[i] = 15
+    c.append('#708033')
+
+radius = 57.5
+for i in range(14, 21):
+    xo[i] = 100 + radius * math.cos((i - 14) * 2. * math.pi / 7)
+    yo[i] = 100 + radius * math.sin((i - 14) * 2. * math.pi / 7)
+    r[i] = 25
+    c.append('#E85129')
+
+radius = 60
+phase = 2. * math.pi / 7 / 2
+for i in range(21, 28):
+    xo[i] = 100 + radius * math.cos(phase + (i - 21) * 2. * math.pi / 7)
+    yo[i] = 100 + radius * math.sin(phase + (i - 21) * 2. * math.pi / 7)
+    r[i] = 12.5
+    c.append('#BA3B1D')
+```
