@@ -1,6 +1,6 @@
 # Recombining Logo
 
-This is a simple python script to create the effect of a magically recombining logo. You can apply the technique to any logo you can decompose into distinct svg elements that can be animated. 
+This is a simple python script to create the effect of a magically recombining logo. You can apply the technique to any logo you can decompose into distinct svg elements that can be animated. The script produces a recombining animation of the OpenRisk [logo](https://www.youtube.com/watch?v=7s1QGWZ3dR8).
 
 ### Concept
 
