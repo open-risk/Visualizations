@@ -1,0 +1,1 @@
+High resolution visualizations of [global mobility patterns](https://www.openriskmanagement.com/2021-02-06-visualization-of-a-planet-in-lockdown/)
