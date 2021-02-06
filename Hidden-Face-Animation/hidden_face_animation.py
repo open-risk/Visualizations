@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-@author: OpenRisk
-@website: www.openrisk.eu
+@author: Open Risk
+@website: www.openriskmanagement.com
 @email: info@openrisk.eu
 """
 
