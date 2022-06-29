@@ -5,15 +5,16 @@
 @email: info@openrisk.eu
 """
 
+import math
+# The following libraries help us with the computations
+import random
+# We use subprocess to do some file conversions on the fly (you can also do this separately)
+import subprocess
+
+import numpy as np
 # This is the main library for generating programmatic svg frames
 import svgwrite
 from svgwrite import px
-# The following libraries help us with the computations
-import random
-import math
-import numpy as np
-# We use subprocess to do some file conversions on the fly (you can also do this separately)
-import subprocess
 
 # This is the total number of svg logo elements (for storage)
 n = 100

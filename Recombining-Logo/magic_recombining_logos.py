@@ -5,7 +5,7 @@
 @email: info@openrisk.eu
 """
 
-# This is the main library for generatic programmatic svg frames
+# This is the main library for generating programmatic svg frames
 import svgwrite
 from svgwrite import px
 # The following libraries help us with the computations
