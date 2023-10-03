@@ -5,16 +5,16 @@
 @email: info@openrisk.eu
 """
 
-# This is the main library for generating programmatic svg frames
-import svgwrite
-from svgwrite import px
+import math
 # The following libraries help us with the computations
 import random
-import math
-import numpy as np
 # We use subprocess to do some file conversions on the fly (you can also do this separately)
 import subprocess
 
+import numpy as np
+# This is the main library for generating programmatic svg frames
+import svgwrite
+from svgwrite import px
 
 # This is the total number of svg logo elements (for storage)
 n = 28
@@ -32,7 +32,6 @@ vy = np.zeros(n)
 r = np.ones(n)
 # element color
 c = []
-
 
 # Set initial locations, radii and colors of all circles
 
@@ -115,12 +114,12 @@ for frame in range(1, motion_frames):
                            stroke_width=0, fill=c[i]))
         xo[i] = xo[i] + dt * vx[i]
         yo[i] = yo[i] + dt * vy[i]
-        if (xo[i] + r[i] > xbox - 4 or xo[i] - r[i] < 4 ):
+        if (xo[i] + r[i] > xbox - 4 or xo[i] - r[i] < 4):
             vx[i] = - vx[i]
         if (yo[i] + r[i] > ybox - 4 or yo[i] - r[i] < 4):
             vy[i] = - vy[i]
 
     # save frame and process it into jpg
     dwg.save()
-    subprocess.call(['convert', '-density', '100', '-flatten', '-quality',  '100', filename1 + '.svg', filename2 + '.jpg'])
-    
+    subprocess.call(
+        ['convert', '-density', '100', '-flatten', '-quality', '100', filename1 + '.svg', filename2 + '.jpg'])
